@@ -1,7 +1,7 @@
-FROM python:3.6
+FROM python:3.7
 
-COPY ./../../src ./
+
 RUN pip install -r requirements.txt
-RUN python manage.py migrate
+RUN python manange.py migrate
 
 
