@@ -11,6 +11,8 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     ports:
       - ${POSTGRES_PORT}:${POSTGRES_PORT}
+    volumes:
+      - ../volumes/postgres/data:/var/lib/postgresql/data  #save database
 
   web:
     image: python:3.7
