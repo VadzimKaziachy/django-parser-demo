@@ -20,6 +20,7 @@ services:
     entrypoint: ./entrypoint.sh
     volumes:
       - ${WORK_FOLDER}:/var/django-parser-demo
+      - ../volumes/logs:/var/django-parser-demo/logs/web # save logs application
     ports:
       - 8000:8000
     depends_on:
