@@ -15,9 +15,18 @@ services:
       - ../volumes/postgres/data:/var/lib/postgresql/data  #save database
 
   web:
-    image: python:3.7
+    build:
+      context: web
     working_dir: /var/django-parser-demo/src/web
-    entrypoint: ./entrypoint.sh
+    entrypoint:
+      - ../../docker/web/wait-for-it.sh
+      - ./entrypoint.sh
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_PORT: ${POSTGRES_PORT}
+      POSTGRES_HOST: ${POSTGRES_HOST}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
       - ${WORK_FOLDER}:/var/django-parser-demo
       - ../volumes/logs:/var/django-parser-demo/logs/web # save logs application
