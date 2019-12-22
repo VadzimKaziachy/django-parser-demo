@@ -1,6 +1,20 @@
 version: '3.7'
 
 services:
+  nginx:
+    image: nginx:1.15
+    restart: always
+    volumes:
+      - ../volumes/logs:/var/log/nginx
+      - ../src/web/static:/var/django-parser-demo/src/web/static
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./nginx/uwsgi_params:/etc/nginx/conf.d/uwsgi_params
+    ports:
+      - 8000:8000
+    depends_on:
+      - postgres
+      - web
+
   postgres:
     image: postgres:11.2
     environment:
@@ -28,9 +42,10 @@ services:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
-      - ${WORK_FOLDER}:/var/django-parser-demo
+      - ./..:/var/django-parser-demo
       - ../volumes/logs:/var/django-parser-demo/logs/web # save logs application
-    ports:
-      - 8000:8000
+      - ../docker/web/entrypoint.sh:/var/django-parser-demo/src/web/entrypoint.sh
+    expose:
+      - 8001
     depends_on:
       - postgres
