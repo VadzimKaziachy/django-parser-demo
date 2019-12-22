@@ -7,5 +7,6 @@ venv/
 volumes/
 logs/
 static/
+src/we/media/
 src/web/entrypoint.sh
 .env
