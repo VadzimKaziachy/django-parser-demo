@@ -1,0 +1,12 @@
+from django.db import models
+
+
+class HomeModel(models.Model):
+    title = models.CharField(verbose_name='Title', max_length=100)
+    image = models.ImageField(verbose_name='Background image')
+    text_button = models.CharField(verbose_name='Text button', max_length=50)
+    description = models.CharField(verbose_name='Description', max_length=200)
+
+    class Meta:
+        db_table = 'home_model'
+        verbose_name = 'Home model'
