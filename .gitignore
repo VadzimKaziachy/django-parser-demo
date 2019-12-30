@@ -7,6 +7,9 @@ venv/
 volumes/
 logs/
 static/
-src/we/media/
+
+src/web/media/
+src/web/htmlcov/
+*.coverage
 src/web/entrypoint.sh
 .env

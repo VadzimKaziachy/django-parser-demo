@@ -1,9 +1,12 @@
-from django.shortcuts import render
+from django.views import generic
 
 from .services.home_service import HomeService
 
 
-def index(request):
-    home_service = HomeService()
-    context = home_service.get_home_page()
-    return render(request=request, template_name='home_page.html', context=context)
+class HomeView(generic.ListView):
+    template_name = 'home/home_page.html'
+    context_object_name = 'context'
+
+    def get_queryset(self):
+        home_service = HomeService()
+        return home_service.get_home_page()
