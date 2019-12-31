@@ -2,14 +2,13 @@
 *.sqlite3
 .idea/
 __pycache__
-media/
 venv/
 volumes/
 logs/
-static/
 
 src/web/media/
 src/web/htmlcov/
+src/web/static/
 *.coverage
 src/web/entrypoint.sh
 .env
