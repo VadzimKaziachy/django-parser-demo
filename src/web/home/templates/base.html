@@ -2,12 +2,19 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+
         <meta charset="UTF-8">
         <title>Parser</title>
+
+        <link rel="stylesheet" type="text/css" href="{% static 'home/css/base.css' %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static 'home/css/home-page.css' %}"/>
+
     </head>
     <body>
+
         <div class="content">
             {% block content %}{% endblock %}
         </div>
+
     </body>
 </html>
