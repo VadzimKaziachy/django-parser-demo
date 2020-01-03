@@ -7,6 +7,9 @@ class HomeModel(models.Model):
     text_button = models.CharField(verbose_name='Text button', max_length=50)
     description = models.CharField(verbose_name='Description', max_length=200)
 
+    def __str__(self):
+        return self.title
+
     class Meta:
         db_table = 'home_model'
         verbose_name = 'Home model'
