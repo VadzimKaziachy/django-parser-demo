@@ -1,6 +1,8 @@
 # Setup with Virtualenv
 
-You can run the gns-backend project locally without installing Docker, and just use Virtualenv,
+[Русский](../ru/virtualenv.md) | **English**
+
+You can run the django-parser-demo project locally without installing Docker, and just use Virtualenv,
 which is the recommended installation approach for Django itself.
 
 ### Dependencies
@@ -20,21 +22,21 @@ Make sure that virtualenv is activated,
 otherwise further actions will entail the installation of the globano project in your system.
 
 Next, you need to install all the necessary packages for the application.
-To do this, go to the [docker/web](docker/web) folder and install the packages:
+To do this, go to the [docker/web](../../docker/web) folder and install the packages:
 
     cd docker/web
     pip install -r requirements.txt
     
 The next step is to configure our local environment variables. 
-You can read how to configure the environment variable file in the section [Environment variables](#enviroment)
+You can read how to configure the environment variable file in the section [Environment variables](enviroment.md)
 
 After everything has been configured, you can start the project. The first thing you need to do is perform migrations
 to set up a database:
 
     python manage.py migrate
 
-After all the above has been done, you can run our project. To do this, run the command below,
-it will allow you to run the project on your machine:
+After all the above has been done, you can run project. To do this, run the command below,
+it will allow you to run the project:
 
     python manage.py runserver
 

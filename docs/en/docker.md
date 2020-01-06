@@ -1,5 +1,7 @@
 # Setup with Docker
 
+[Русский](../ru/docker.md) | **English**
+
 ### Dependencies
 
 * [Docker](https://docs.docker.com/engine/installation/)
