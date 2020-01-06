@@ -1,4 +1,4 @@
-# Tests
+# Тесты
 
 **Русский** | [English](../en/tests.md)
 

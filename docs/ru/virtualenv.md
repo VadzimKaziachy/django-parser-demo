@@ -1,4 +1,4 @@
-# Setup with Virtualenv
+# Настройка с помощью Virtualenv
 
 **Русский** | [English](../en/virtualenv.md)
 

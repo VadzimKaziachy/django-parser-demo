@@ -1,4 +1,4 @@
-# Setup with Docker
+# Настройка с помощью Docker
 
 **Русский** | [English](../en/docker.md)
 
