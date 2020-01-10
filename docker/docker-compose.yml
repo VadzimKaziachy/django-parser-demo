@@ -50,3 +50,17 @@ services:
       - 8001
     depends_on:
       - postgres
+
+  parser:
+    build:
+      context: parser
+    working_dir: /var/django-parser-demo/src/parser
+    entrypoint:
+      - ../../docker/parser/entrypoint.sh
+    volumes:
+    - ../src/parser:/var/django-parser-demo/src/parser
+    - ../docker/parser/entrypoint.sh:/var/django-parser-demo/docker/parser/entrypoint.sh
+    expose:
+      - 6800
+
+
