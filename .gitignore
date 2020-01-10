@@ -12,3 +12,7 @@ src/web/static/
 *.coverage
 src/web/entrypoint.sh
 .env
+
+src/parser/logs
+src/parser/dbs
+src/parser/twistd.pid
