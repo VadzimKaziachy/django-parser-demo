@@ -13,6 +13,10 @@ class CategorySpider(CrawlSpider):
         Rule(LinkExtractor(restrict_css=['a.j-load_page']), callback='parser_page', follow=True),
     )
 
+    def __init__(self, category=None, *args, **kwargs):
+        self.start_urls.append(category)
+        super().__init__(*args, **kwargs)
+
     def parser_page(self, response):
         for product in response.css('span.g-item-data'):
             yield ProductItem(
