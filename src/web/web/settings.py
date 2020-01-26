@@ -32,7 +32,7 @@ DEBUG = env('DEBUG')
 ADMIN_USER_NAME = env('ADMIN_USER_NAME')
 ADMIN_USER_PASSWORD = env('ADMIN_USER_PASSWORD')
 
-ALLOWED_HOSTS = ['django','127.0.0.1']
+ALLOWED_HOSTS = ['django','127.0.0.1', 'localhost']
 
 # Application definition
 
@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'home',
+    'twenty_first_century.apps.TwentyFirstCenturyConfig',
 ]
 
 MIDDLEWARE = [
