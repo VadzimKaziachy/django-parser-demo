@@ -10,7 +10,7 @@ The application is written in [Django](https://www.djangoproject.com/) 2.2.6.
 **Contents**
 
 - [Environment variables](docs/en/enviroment.md)
-- [Setup with Virtualenv](docs/en/enviroment.md)
+- [Setup with Virtualenv](docs/en/virtualenv.md)
 - [Setup with Docker](docs/en/docker.md)
 - [Tests](docs/en/tests.md)
 

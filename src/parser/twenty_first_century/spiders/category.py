@@ -7,7 +7,7 @@ from twenty_first_century.items import ProductItem
 class CategorySpider(CrawlSpider):
     name = 'category'
     allowed_domains = ['www.21vek.by']
-    start_urls = ['https://www.21vek.by/tv/']
+    start_urls = []
 
     rules = (
         Rule(LinkExtractor(restrict_css=['a.j-load_page']), callback='parser_page', follow=True),

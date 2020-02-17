@@ -52,8 +52,7 @@ services:
       - postgres
 
   parser:
-    build:
-      context: parser
+    image: python:3.7
     working_dir: /var/django-parser-demo/src/parser
     entrypoint:
       - ../../docker/parser/entrypoint.sh
