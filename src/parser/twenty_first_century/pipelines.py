@@ -4,6 +4,7 @@
 #
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: https://docs.scrapy.org/en/latest/topics/item-pipeline.html
+import requests
 from typing import List, NoReturn
 
 from twenty_first_century.items import ProductItem
@@ -19,4 +20,5 @@ class TwentyFirstCenterPipeline(object):
         return product
 
     def close_spider(self, spider) -> NoReturn:
-        pass
+        requests.put(url='http://127.0.0.1:8000/vek', json=[dict(item) for item in self.products])
+

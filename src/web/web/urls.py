@@ -19,7 +19,9 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('home.urls'))
+    path('vek', include('twenty_first_century.urls')),
+    path('', include('home.urls')),
+    path(r'api-auth/', include('rest_framework.urls'))
 ]
 
 if settings.DEBUG:
