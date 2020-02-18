@@ -55,10 +55,10 @@ services:
     image: python:3.7
     working_dir: /var/django-parser-demo/src/parser
     entrypoint:
-      - ../../docker/parser/entrypoint.sh
+      - ./entrypoint.sh
     volumes:
     - ../src/parser:/var/django-parser-demo/src/parser
-    - ../docker/parser/entrypoint.sh:/var/django-parser-demo/docker/parser/entrypoint.sh
+    - ../docker/parser/entrypoint.sh:/var/django-parser-demo/src/parser/entrypoint.sh
     expose:
       - 6800
 
