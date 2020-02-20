@@ -7,3 +7,4 @@ pytz==2019.1
 sqlparse==0.3.0
 uWSGI==2.0.18
 djangorestframework==3.11.0
+requests==2.22.0

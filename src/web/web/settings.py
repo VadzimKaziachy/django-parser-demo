@@ -32,7 +32,7 @@ DEBUG = env('DEBUG')
 ADMIN_USER_NAME = env('ADMIN_USER_NAME')
 ADMIN_USER_PASSWORD = env('ADMIN_USER_PASSWORD')
 
-ALLOWED_HOSTS = ['django','127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['django','127.0.0.1', 'localhost', 'web']
 
 # Application definition
 

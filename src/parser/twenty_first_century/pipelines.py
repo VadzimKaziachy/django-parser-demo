@@ -20,5 +20,5 @@ class TwentyFirstCenterPipeline(object):
         return product
 
     def close_spider(self, spider) -> NoReturn:
-        requests.put(url='http://127.0.0.1:8000/vek', json=[dict(item) for item in self.products])
+        requests.put(url='http://web:8001/vek', json=[dict(item) for item in self.products])
 
