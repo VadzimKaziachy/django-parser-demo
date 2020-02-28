@@ -7,6 +7,7 @@
 import requests
 from typing import List, NoReturn
 
+from settings import WEB_URL
 from twenty_first_century.items import ProductItem
 
 
@@ -20,5 +21,5 @@ class TwentyFirstCenterPipeline(object):
         return product
 
     def close_spider(self, spider) -> NoReturn:
-        requests.put(url='http://web:8001/vek', json=[dict(item) for item in self.products])
+        requests.put(url=WEB_URL, json=[dict(item) for item in self.products])
 

@@ -62,4 +62,9 @@ services:
     expose:
       - 6800
 
-
+  redis:
+    image: redis:6.0-rc
+    restart: always
+    command: redis-server
+    ports:
+      - 6379:6379
