@@ -7,7 +7,7 @@
 import requests
 from typing import List, NoReturn
 
-from settings import WEB_URL
+from .settings import WEB_URL
 from twenty_first_century.items import ProductItem
 
 

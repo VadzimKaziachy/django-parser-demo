@@ -8,7 +8,7 @@ from .settings import CELERY_RESULT_BACKEND, CELERY_BROKER_URL
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'web.settings')
 
-app = Celery('quality_app', backend=CELERY_RESULT_BACKEND, broker=CELERY_BROKER_URL)
+app = Celery('app', backend=CELERY_RESULT_BACKEND, broker=CELERY_BROKER_URL)
 app.config_from_object('django.conf:settings')
 
 app.conf.task_routes = {
@@ -18,8 +18,8 @@ app.conf.task_routes = {
 }
 
 app.conf.beat_schedule = {
-    'start_parsing_product': {
-        'task': 'twenty_first_century.tasks.start_parsing_product',
+    'start_parsing_shop': {
+        'task': 'twenty_first_century.tasks.start_parsing_shop',
         'schedule': crontab(),
     }
 }

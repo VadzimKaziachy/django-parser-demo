@@ -141,6 +141,6 @@ CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_BACKEND = 'django-db'
 
-PARSER_URL = 'http://parser:6800/schedule.json?project=twenty_first_century&spider=category&category={}'
+PARSER_URL = 'http://127.0.0.1:6800/schedule.json?project=twenty_first_century&spider=category&category_pk={pk}&category={link}'
 
 # from .logging import *

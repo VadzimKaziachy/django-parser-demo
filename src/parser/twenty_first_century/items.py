@@ -10,5 +10,6 @@ import scrapy
 
 class ProductItem(scrapy.Item):
     code = scrapy.Field()
-    price = scrapy.Field()
     name = scrapy.Field()
+    price = scrapy.Field()
+    category_pk = scrapy.Field()
