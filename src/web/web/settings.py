@@ -32,7 +32,7 @@ DEBUG = env('DEBUG')
 ADMIN_USER_NAME = env('ADMIN_USER_NAME')
 ADMIN_USER_PASSWORD = env('ADMIN_USER_PASSWORD')
 
-ALLOWED_HOSTS = ['django','127.0.0.1', 'localhost', 'web']
+ALLOWED_HOSTS = ['django', '127.0.0.1', 'localhost', 'web']
 
 # Application definition
 
@@ -46,8 +46,25 @@ INSTALLED_APPS = [
     'django_celery_results',
     'home.apps.HomeConfig',
     'twenty_first_century.apps.TwentyFirstCenturyConfig',
-    'rest_framework'
+    'rest_framework',
+    'rest_framework_swagger',
 ]
+
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {
+        'basic': {
+            'type': 'basic'
+        }
+    },
+    'SUPPORTED_SUBMIT_METHODS': [
+        'get',
+    ],
+    'JSON_EDITOR': True,
+    'SHOW_REQUEST_HEADERS': True
+}
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema'
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -136,11 +153,10 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Celery
-CELERY_BROKER_URL = 'redis://localhost:6379'
+CELERY_BROKER_URL = 'redis://{host}:6379'.format(host=env('REDIS_HOST'))
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_BACKEND = 'django-db'
 
-PARSER_URL = 'http://127.0.0.1:6800/schedule.json?project=twenty_first_century&spider=category&category_pk={pk}&category={link}'
-
+PARSER_URL = 'http://{host}:6800'.format(host=env('PARSER_HOST'))
 # from .logging import *

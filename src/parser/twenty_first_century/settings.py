@@ -89,4 +89,4 @@ ITEM_PIPELINES = {
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 
-WEB_URL = 'http://127.0.0.1:8000/vek'
+WEB_URL = 'http://web:8001/api/vek/{}'

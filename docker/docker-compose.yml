@@ -52,15 +52,14 @@ services:
       - postgres
 
   parser:
-    image: python:3.7
+    build:
+      context: web
     working_dir: /var/django-parser-demo/src/parser
-    entrypoint:
-      - ./entrypoint.sh
+    command: "scrapyd"
     volumes:
-    - ../src/parser:/var/django-parser-demo/src/parser
-    - ../docker/parser/entrypoint.sh:/var/django-parser-demo/src/parser/entrypoint.sh
-    expose:
-      - 6800
+      - ../src/parser:/var/django-parser-demo/src/parser
+    ports:
+      - 6800:6800
 
   redis:
     image: redis:6.0-rc
@@ -68,3 +67,26 @@ services:
     command: redis-server
     ports:
       - 6379:6379
+    depends_on:
+      - web
+
+  handler_product_queue:
+    build:
+      context: web
+    working_dir: /var/django-parser-demo/src/web
+    command: "celery -A web worker -l INFO -Q start_handler_product_queue"
+    volumes:
+      - ./..:/var/django-parser-demo
+    depends_on:
+      - redis
+
+  scheduler_parsing_shop:
+    build:
+      context: web
+    working_dir: /var/django-parser-demo/src/web
+    command: "celery -A web worker -B -l INFO"
+    volumes:
+      - ./..:/var/django-parser-demo
+    depends_on:
+      - redis
+

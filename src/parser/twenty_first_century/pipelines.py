@@ -4,6 +4,7 @@
 #
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: https://docs.scrapy.org/en/latest/topics/item-pipeline.html
+import os
 import requests
 from typing import List, NoReturn
 
@@ -21,5 +22,7 @@ class TwentyFirstCenterPipeline(object):
         return product
 
     def close_spider(self, spider) -> NoReturn:
-        requests.put(url=WEB_URL, json=[dict(item) for item in self.products])
-
+        requests.patch(
+            url=WEB_URL.format(os.environ['SCRAPY_JOB']),
+            json={'data': [dict(item) for item in self.products]}
+        )

@@ -1,18 +1,50 @@
-from rest_framework import status
-from rest_framework.views import APIView
-from rest_framework.response import Response
-import requests
+from rest_framework.generics import UpdateAPIView, ListAPIView, RetrieveAPIView
 
-from .forms import BodySerializer
-from .tasks import start_handler_product
+from web.utils import ProductsPagination
+from .models import (
+    ScrapyModel,
+    ProductModel,
+    CategoryModel,
+    ParserProductModel
+)
+from .serializers import (
+    ScrapySerializer,
+    ProductSerializer,
+    CategorySerializer,
+    ParserProductSerializer
+)
 
 
-class ScrapyView(APIView):
+class ScrapyView(UpdateAPIView):
+    queryset = ScrapyModel.objects.all()
+    serializer_class = ScrapySerializer
+    lookup_field = 'job_id'
+    http_method_names = [u'patch']
 
-    def put(self, request, category_pk=None, *args, **kwargs):
-        start_handler_product.delay()
-        # print(request.data)
-        # data = BodySerializer(data=request.data, many=True)
-        # if data.is_valid():
-        #     return Response(status=status.HTTP_200_OK)
-        return Response(status=status.HTTP_409_CONFLICT)
+
+class CategoriesView(ListAPIView):
+    queryset = CategoryModel.objects.all()
+    serializer_class = CategorySerializer
+    pagination_class = ProductsPagination
+
+
+class CategoryView(RetrieveAPIView):
+    queryset = CategoryModel.objects.all()
+    serializer_class = CategorySerializer
+
+
+class ProductsView(ListAPIView):
+    queryset = ProductModel.objects.all()
+    serializer_class = ProductSerializer
+    pagination_class = ProductsPagination
+
+
+class ProductView(RetrieveAPIView):
+    queryset = ProductModel.objects.all()
+    serializer_class = ProductSerializer
+
+
+class ParserProductView(ListAPIView):
+    queryset = ParserProductModel.objects.all()
+    serializer_class = ParserProductSerializer
+    pagination_class = ProductsPagination

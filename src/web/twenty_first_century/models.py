@@ -1,6 +1,8 @@
 from django.db import models
 from django.core.validators import MinValueValidator
 
+from django.contrib.postgres.fields import JSONField
+
 
 class CategoryModel(models.Model):
     name = models.CharField(max_length=255)
@@ -10,6 +12,7 @@ class CategoryModel(models.Model):
         return self.name
 
     class Meta:
+        ordering = ('pk',)
         verbose_name = 'Category'
         verbose_name_plural = 'Categories'
 
@@ -23,6 +26,7 @@ class ProductModel(models.Model):
         return self.name
 
     class Meta:
+        ordering = ('pk', )
         verbose_name = 'Product'
         verbose_name_plural = 'Products'
 
@@ -36,5 +40,17 @@ class ParserProductModel(models.Model):
         return self.product.name
 
     class Meta:
+        ordering = ('pk',)
         verbose_name = 'Parser product'
         verbose_name_plural = 'Parser products'
+
+
+class ScrapyModel(models.Model):
+    data = JSONField(blank=True, null=True)
+    job_id = models.CharField(max_length=1000)
+    category = models.ForeignKey(CategoryModel, on_delete=models.CASCADE)
+
+    class Meta:
+        ordering = ('pk',)
+        verbose_name = 'Scrapy model'
+        verbose_name_plural = 'Scrapy models'

@@ -1,21 +1,18 @@
-# from __future__ import absolute_import, unicode_literals
-
-import requests
 from celery import shared_task
-from django.conf import settings
 
 from web.celery import app
-from .models import CategoryModel
+
+from .services.parsing_service import ParsingService
+from .services.handler_products_service import HandlerProductsService
 
 
 @shared_task
 def start_parsing_shop():
-    categories = CategoryModel.objects.all()
-    for category in categories:
-        requests.post(url=settings.PARSER_URL.format(pk=category.pk, link=category.link))
-    print('task 1')
+    parsing_service = ParsingService()
+    parsing_service.start()
 
 
 @app.task
-def start_handler_product():
-    print('task 2')
+def start_handler_product(pk: int):
+    handler_products_service = HandlerProductsService(pk=pk)
+    handler_products_service.start()
