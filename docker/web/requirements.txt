@@ -8,7 +8,7 @@ redis==3.5.1
 django-celery-results==1.2.1
 uWSGI==2.0.18
 requests==2.23.0
-Pillow==7.1.2
+Pillow==8.1.1
 
 Scrapy==2.1.0
 scrapyd==1.2.1
