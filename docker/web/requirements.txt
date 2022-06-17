@@ -10,6 +10,6 @@ uWSGI==2.0.18
 requests==2.23.0
 Pillow==7.1.2
 
-Scrapy==2.1.0
+Scrapy==2.6.1
 scrapyd==1.2.1
 python-scrapyd-api==2.1.2
